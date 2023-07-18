@@ -24,6 +24,9 @@ function App() {
   useEffect(() => {
     getTours();
   }, []);
+  if (loading) {
+    return <Loading />;
+  }
   if (tours.length === 0) {
     return (
       <main>
@@ -38,15 +41,9 @@ function App() {
   }
   return (
     <>
-      {loading ? (
-        <main>
-          <Loading />
-        </main>
-      ) : (
-        <main>
-          <Tours tours={tours} setTours={setTours} />
-        </main>
-      )}
+      <main>
+        <Tours tours={tours} setTours={setTours} />
+      </main>
     </>
   );
 }
